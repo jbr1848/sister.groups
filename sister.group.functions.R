@@ -12,14 +12,22 @@ MergeData <- function(data1,data2) {
 }
 
 getNodeStates <- function(data, tree){
+	
 	ml.values <- ace(data, tree, type = "discrete", method = "ML")
 	col.nums <- max.col(ml.values$lik.anc)
 	col.names <- colnames(ml.values$lik.anc)
+	as.numeric(col.names)
+	states <- numeric(length=length(col.nums))
 	for(i in 1:length(col.nums)){
 	states <- col.names[col.nums[i]]
-	tree$node.label <- states
+	#tree$node.label <- states
+	as.numeric(states)
 	print(states)
-	print(tree)
+	
 }
 
 }
+
+#all.dec.states <- function(
+
+length(states)

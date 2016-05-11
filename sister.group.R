@@ -17,16 +17,11 @@ tree.zanne <- read.tree("~/R/Vascular_Plants_rooted.dated.tre")
 comb.data <- MergeData(ploidy.data, PTGR.data)
 data.plus.tree <- treedata(tree.zanne, comb.data, sort=TRUE)
 
-nodes <- getNodeStates(data.plus.tree$data[,1], data.plus.tree$phy)
-data.plus.tree$phy$node.label <- nodes 
+nodes <- getNodeStates(data=data.plus.tree$data[,1], tree=data.plus.tree$phy)
+labelled.nodes <- makeNodeLabel(phy=data.plus.tree$phy$node.label, method = "user", nodelist = nodes) 
 
 col.nums <- max.col(ml.values$lik.anc)
 col.names <- colnames(ml.values$lik.anc)
-
-for(i in 1:length()){
-	states <- col.names[col.nums[i]]
-	print(states)
-}
 
 col.names[col.nums[34]]
 max(blah$lik.anc[1,])
